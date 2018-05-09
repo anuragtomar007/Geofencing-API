@@ -1,0 +1,32 @@
+
+GEO FENCING API
+
+STEPS:
+
+1- Create an xml file with necessary views.
+2- Implementation of google play services (also google maps) in dependencies.
+3- Add Permissions in Android Manifest file.
+4- MainActivity Class will be implementing ConnectionCallback,
+   LocationListener(or ResultCallback<Status>),onConnectionFailedListener.
+4- Create an instance of Google Api Client and Arraylist of Type Geofence.
+5- Build the Google Api Client using Builder.
+6- Populate the geofence Array list.
+7- Override all the necessary methods and inside onStart and onStop connect and disconnect the
+   googleApiClient,also do it onConnectionSuspended.
+8- Adding onCLick for the button in xml.Create that function and inside this check if
+   googleApiClient is connected or not ,and then try to add geofences and set
+   resultCallback to this.
+9- Inside the onLocationChanged/onResult create a toast displaying Geofence added Successfully.
+10- Create a function returning Pending Intent to GeofenceTransitionIntentService class and
+    a function returning GeofencingRequest where you need to create a
+    geofencingRequest using Builder.
+11- Create a Constant Class and initialize all the constants and HashMap used in Main Activity.
+12- Now create a Class named GeofenceTransitionIntentService which extends IntentService
+    Inside onHandleIntent create an event from GeofencingEvent using the intent passed as
+    parameter to it.Check for the event if it has any error,log it or else get the Description
+    from getGeofenceTransitionDetails method.
+    Send this string as parameter to a method SendNotification.
+13- Create getGeofenceTransitionDetails method for getting the details and returning them.
+14- Create a method Called SendNotification where you take the description passed and create a
+    notification to display on notification bar of Users'device.
+    .....AND NOW RUN THE APP....
